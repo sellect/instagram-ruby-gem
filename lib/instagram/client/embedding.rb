@@ -21,7 +21,10 @@ module Instagram
       def oembed(*args)
         url = args.first
         return nil unless url
-        get("oembed?url=#{url}", {}, false, false, true)
+        # since the oembed endpoint changed without a redirect
+        # and it's base endpoint is different than every other
+        # aspect of the API we have to hardcode the endpoint here
+        get("https://api.instagram.com/oembed/?url=#{url}", {}, false, false, true)
       end
     end
   end
