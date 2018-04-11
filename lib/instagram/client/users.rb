@@ -2,6 +2,19 @@ module Instagram
   class Client
     # Defines methods related to users
     module Users
+
+      def my_user(*args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        response = get("users/self", options)
+        response
+      end
+
+      def my_media(*args)
+        options = args.last.is_a?(Hash) ? args.pop : {}
+        response = get("users/self/media/recent", options)
+        response
+      end
+
       # Returns extended information of a given user
       #
       # @overload user(id=nil, options={})
